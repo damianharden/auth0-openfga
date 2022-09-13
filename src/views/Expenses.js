@@ -23,9 +23,15 @@ export const ExpensesComponent = () => {
     getAccessTokenSilently
   } = useAuth0();
 
+  const getAccessTokenSilentlyAndLogInspectionUrl = async () => {
+    const token = await getAccessTokenSilently();
+    console.log(`Access token inspection via jwt.io: https://jwt.io/#access_token=${token}`);
+    return token;
+  }
+
   const callApi = async () => {
     try {
-      const token = await getAccessTokenSilently();
+      const token = await getAccessTokenSilentlyAndLogInspectionUrl();
 
       const response = await fetch(`${apiOrigin}/api/v1/expenses`, {
         headers: {
@@ -50,7 +56,7 @@ export const ExpensesComponent = () => {
 
   const approve = async (expenseId) => {
     try {
-      const token = await getAccessTokenSilently();
+      const token = await getAccessTokenSilentlyAndLogInspectionUrl();
 
       const response = await fetch(`${apiOrigin}/api/v1/expenses/${expenseId}/approve`, {
         method: "POST",
@@ -76,7 +82,7 @@ export const ExpensesComponent = () => {
 
   const reject = async (expenseId) => {
     try {
-      const token = await getAccessTokenSilently();
+      const token = await getAccessTokenSilentlyAndLogInspectionUrl();
 
       const response = await fetch(`${apiOrigin}/api/v1/expenses/${expenseId}/reject`, {
         method: "POST",
