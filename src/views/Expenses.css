@@ -1,0 +1,39 @@
+div.expense {
+  clear: left;
+}
+
+div.row-header div {
+  font-weight: bold;
+}
+
+div.date, div.submitter, div.description, div.amount, div.status, div.actions {
+  float: left;
+}
+
+div.date {
+  width: 8em;
+}
+
+div.submitter {
+  width: 8em;
+}
+
+div.description {
+  width: 15em;
+}
+
+div.amount {
+  width: 8em;
+}
+
+div.status {
+  width: 12em;
+}
+
+div.actions button {
+  width: 5em;
+}
+
+div.actions button.btn-danger {
+  margin-left: 0.5em;
+}
