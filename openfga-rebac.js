@@ -6,9 +6,49 @@ const employeeCanViewExpense = module.exports.employeeCanViewExpense = async fun
   return await userHasRelationshipWithObject(`${FGA_TYPE.Employee}:${employeeId}`, FGA_RELATIONSHIP.Viewer, `${FGA_TYPE.Expense}:${expense.id}`);
 }
 
+/*
+  If you want to update the employeeCanApproveExpense function so that a manager of a manager can
+  override an expense rejection with an approval then:
+  - Remove the current employeeCanApproveExpense function
+  - Uncomment the updated employeeCanApproveExpense function below
+  - Uncomment the "Uncomment" instructions in views/Expenses.js (search for "Uncomment" in that file)
+*/
+/*
+const employeeCanApproveExpense = module.exports.employeeCanApproveExpense = async function(employeeId, expense) {
+  if (expense.status === EXPENSE_STATUS.Submitted) {
+    return await userHasRelationshipWithObject(`${FGA_TYPE.Employee}:${employeeId}`, FGA_RELATIONSHIP.Approver, `${FGA_TYPE.Expense}:${expense.id}`);
+  } else if (expense.status === EXPENSE_STATUS.Rejected) {
+    return await userHasRelationshipWithObject(`${FGA_TYPE.Employee}:${employeeId}`, FGA_RELATIONSHIP.Approver, `${FGA_TYPE.Expense}:${expense.id}`) &&
+      await userHasRelationshipWithObject(`${FGA_TYPE.Employee}:${employeeId}`, FGA_RELATIONSHIP.Manager, `${FGA_TYPE.Employee}:${expense.rejecterId}`);
+  } else {
+    return false;
+  }  
+}
+*/
+
 const employeeCanApproveExpense = module.exports.employeeCanApproveExpense = async function(employeeId, expense) {
   return await userHasRelationshipWithObject(`${FGA_TYPE.Employee}:${employeeId}`, FGA_RELATIONSHIP.Approver, `${FGA_TYPE.Expense}:${expense.id}`);
 }
+
+/*
+  If you want to update the employeeCanRejectExpense function so that a manager of a manager can
+  override an expense approval with a rejection then:
+  - Remove the current employeeCanRejectExpense function
+  - Uncomment the updated employeeCanRejectExpense function below
+  - Uncomment the "Uncomment" instructions in views/Expenses.js (search for "Uncomment" in that file)
+*/
+/*
+const employeeCanRejectExpense = module.exports.employeeCanRejectExpense = async function(employeeId, expense) {
+  if (expense.status === EXPENSE_STATUS.Submitted) {
+    return await userHasRelationshipWithObject(`${FGA_TYPE.Employee}:${employeeId}`, FGA_RELATIONSHIP.Rejecter, `${FGA_TYPE.Expense}:${expense.id}`);
+  } else if (expense.status === EXPENSE_STATUS.Approved) {
+    return await userHasRelationshipWithObject(`${FGA_TYPE.Employee}:${employeeId}`, FGA_RELATIONSHIP.Rejecter, `${FGA_TYPE.Expense}:${expense.id}`) &&
+      await userHasRelationshipWithObject(`${FGA_TYPE.Employee}:${employeeId}`, FGA_RELATIONSHIP.Manager, `${FGA_TYPE.Employee}:${expense.approverId}`);
+  } else {
+    return false;
+  }
+}
+*/
 
 const employeeCanRejectExpense = module.exports.employeeCanRejectExpense = async function(employeeId, expense) {
   return await userHasRelationshipWithObject(`${FGA_TYPE.Employee}:${employeeId}`, FGA_RELATIONSHIP.Rejecter, `${FGA_TYPE.Expense}:${expense.id}`);

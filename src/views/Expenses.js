@@ -193,7 +193,7 @@ export const ExpensesComponent = () => {
             <div className="description">Description</div>
             <div className="amount">Amount</div>
             <div className="status">Status</div>
-            {/* Uncomment the below HTML when instructed by the workshop guide */}
+            {/* Uncomment the below HTML - remove lines 197 and 199 (line 198 if you remove line 199) - if instructed to do so */}
             {/* 
             <div className="actions">&nbsp;</div>
             */}
@@ -205,8 +205,8 @@ export const ExpensesComponent = () => {
             <div className="description">{expense.description}</div>
             <div className="amount">${expense.amount}</div>
             <div className="status">{expense.status}</div>
-            {/* Uncomment the below HTML when instructed by the workshop guide */}
-            {/* 
+            {/* Uncomment the below HTML - remove lines 209 and 214 (line 213 if you remove line 209) - if instructed to do so */}
+            {/*
             <div className="actions">
               { expense.canApprove && (<Button color="success" onClick={() => approve(expense.id)}>Approve</Button>)}
               { expense.canReject && (<Button color="danger" onClick={() => reject(expense.id)}>Reject</Button>)}        
