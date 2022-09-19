@@ -193,7 +193,7 @@ export const ExpensesComponent = () => {
             <div className="description">Description</div>
             <div className="amount">Amount</div>
             <div className="status">Status</div>
-            {/* Uncomment the below HTML - remove lines 197 and 199 (line 198 if you remove line 199) - if instructed to do so */}
+            {/* Uncomment the below HTML - remove lines 197 and 199 (line 198 if you remove line 197) - if instructed to do so */}
             {/* 
             <div className="actions">&nbsp;</div>
             */}
